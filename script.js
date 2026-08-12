@@ -50,7 +50,7 @@ async function sendMessage() {
 
     try {
 
-        const response = await fetch("/chat", {
+        const response = await fetch("http://127.0.0.1:5000/chat", {
             method: "POST",
 
             headers: {
@@ -66,18 +66,18 @@ async function sendMessage() {
 
         if (data.reply) {
 
-            addMessage(data.reply, "bot");
-            saveChat();
+    addMessage(data.reply, "bot");
+    saveChat();
 
-        } else {
+} else {
 
-            addMessage(
-                "Sorry, something went wrong.",
-                "bot"
-            );
+    addMessage(
+        "Backend Error: " + (data.error || "Unknown error"),
+        "bot"
+    );
 
-            saveChat();
-        }
+    saveChat();
+}
 
     } catch (error) {
 
