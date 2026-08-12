@@ -7,7 +7,18 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+
+# Allow the live frontend to access this backend
+CORS(
+    app,
+    resources={
+        r"/chat": {
+            "origins": [
+                "https://ai-agents-website.onrender.com"
+            ]
+        }
+    }
+)
 
 api_key = os.getenv("OPENAI_API_KEY")
 
@@ -31,12 +42,16 @@ def chat():
         data = request.get_json()
 
         if not data:
-            return jsonify({"error": "Invalid request"}), 400
+            return jsonify({
+                "error": "Invalid request"
+            }), 400
 
         message = data.get("message", "").strip()
 
         if not message:
-            return jsonify({"error": "Message is required"}), 400
+            return jsonify({
+                "error": "Message is required"
+            }), 400
 
         response = client.responses.create(
             model="gpt-4o-mini",
@@ -49,10 +64,11 @@ def chat():
 
     except Exception as e:
         print("OPENAI ERROR:", repr(e))
+
         return jsonify({
             "error": str(e)
         }), 500
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
