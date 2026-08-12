@@ -50,41 +50,41 @@ async function sendMessage() {
 
     try {
 
-        const response = await fetch("http://127.0.0.1:5000/chat", {
-            method: "POST",
+    const response = await fetch("https://ai-agents-website-my.onrender.com/chat", {
+        method: "POST",
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-            body: JSON.stringify({
-                message: message
-            })
-        });
+        body: JSON.stringify({
+            message: message
+        })
+    });
 
-        const data = await response.json();
+    const data = await response.json();
 
-        if (data.reply) {
+    if (data.reply) {
 
-    addMessage(data.reply, "bot");
-    saveChat();
+        addMessage(data.reply, "bot");
+        saveChat();
 
-} else {
+    } else {
 
-    addMessage(
-        "Backend Error: " + (data.error || "Unknown error"),
-        "bot"
-    );
+        addMessage(
+            "Backend Error: " + (data.error || "Unknown error"),
+            "bot"
+        );
 
-    saveChat();
-}
+        saveChat();
+    }
 
-    } catch (error) {
+} catch (error) {
 
     console.error(error);
 
     addMessage(
-        "I'm currently offline because my AI backend is not connected to this GitHub Pages website yet. 🤖 Please try again later.",
+        "I'm currently offline because my AI backend is not connected to this website yet. 🤖 Please try again later.",
         "bot"
     );
 
