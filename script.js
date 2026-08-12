@@ -81,16 +81,15 @@ async function sendMessage() {
 
     } catch (error) {
 
-        console.error(error);
+    console.error(error);
 
-        addMessage(
-            "Unable to connect to the AI server.",
-            "bot"
-        );
+    addMessage(
+        "I'm currently offline because my AI backend is not connected to this GitHub Pages website yet. 🤖 Please try again later.",
+        "bot"
+    );
 
-        saveChat();
-    }
-
+    saveChat();
+}
     typing.style.display = "none";
     sendBtn.disabled = false;
     messageInput.focus();
