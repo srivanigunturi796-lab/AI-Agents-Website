@@ -1,295 +1,251 @@
-# 🤖 My AI Chatbot
+# 🤖 AI Agents Website
 
-> A modern local AI chatbot web application powered by **Llama 3.2**, **Ollama**, and **Flask**, with text and voice-based interaction.
+A modern, responsive AI chatbot web application built with **HTML, CSS, JavaScript, Flask, and Groq AI**. The application provides an interactive chat experience with voice input, dark mode, chat history, and a deployed cloud backend.
 
-## 📌 Overview
+## 🌐 Live Demo
 
-**My AI Chatbot** is a web-based conversational AI application designed to provide an interactive and user-friendly chat experience using a locally running Large Language Model (LLM).
+🚀 **[Open AI Agents Website](https://srivanigunturi796-lab.github.io/AI-Agents-Website/)**
 
-The application uses **Flask** as the backend, **Ollama** to run the Llama 3.2 model locally, and **HTML, CSS, and JavaScript** for the frontend.
+## 📂 GitHub Repository
 
-It supports both **text and voice interaction**, dark/light mode, chat history, timestamps, AI voice responses, and other modern chatbot features.
+💻 **[View Source Code](https://github.com/srivanigunturi796-lab/AI-Agents-Website)**
 
 ---
 
 ## ✨ Features
 
-* 🤖 **AI Chat** — Conversational responses using Llama 3.2
-* 🎤 **Voice Input** — Speak instead of typing
-* 🔊 **AI Voice Reply** — AI responses can be spoken aloud
-* 🌙 **Dark / Light Mode** — Switch between themes
-* 💾 **Chat History** — Conversations are stored using browser LocalStorage
-* 🗑️ **Clear Chat** — Remove the current conversation
-* 📋 **Copy Response** — Copy AI responses with one click
-* 🕐 **Message Timestamps** — Displays the time of each message
-* ⏳ **Typing Indicator** — Shows when the AI is processing a response
-* ⌨️ **Enter-to-Send** — Send messages using the Enter key
-* 📱 **Responsive Design** — Designed for desktop and mobile screens
-* 🔒 **Local AI Processing** — AI inference runs locally through Ollama
-
----
-
-## 🖥️ Application Preview
-
-Add screenshots of your chatbot here after taking them from the running application.
-
-```text
-screenshots/
-├── chatbot-light.png
-├── chatbot-dark.png
-└── chatbot-voice.png
-```
-
-Example:
-
-```markdown
-![AI Chatbot Light Mode](screenshots/chatbot-light.png)
-```
-
----
-
-## 🏗️ System Architecture
-
-```text
-┌─────────────────────────────┐
-│       User Interface        │
-│     HTML + CSS + JavaScript │
-└──────────────┬──────────────┘
-               │
-               │ HTTP POST /chat
-               ▼
-┌─────────────────────────────┐
-│       Flask Backend         │
-│          app.py             │
-└──────────────┬──────────────┘
-               │
-               │ HTTP Request
-               ▼
-┌─────────────────────────────┐
-│           Ollama            │
-│        Llama 3.2 Model      │
-└──────────────┬──────────────┘
-               │
-               │ AI Response
-               ▼
-┌─────────────────────────────┐
-│       Chatbot Interface     │
-│ Text + Voice Response       │
-└─────────────────────────────┘
-```
+* 🤖 AI-powered conversational chatbot
+* 💬 Real-time chat interface
+* 🎤 Voice input using Web Speech API
+* 🌙 Dark / Light mode
+* 💾 Chat history using Local Storage
+* 🧹 Clear chat functionality
+* ⌨️ Enter key support for sending messages
+* 📱 Responsive user interface
+* 🔗 Frontend-backend API integration
+* 🚀 Cloud deployment using Render
+* ⚡ Fast AI responses using Groq
+* 🔐 API key stored securely as an environment variable
 
 ---
 
 ## 🛠️ Technologies Used
 
-| Technology         | Purpose                                 |
-| ------------------ | --------------------------------------- |
-| **HTML5**          | Chatbot structure                       |
-| **CSS3**           | UI design, themes and responsive layout |
-| **JavaScript**     | Chat functionality and browser features |
-| **Python**         | Backend programming                     |
-| **Flask**          | Web server and REST API                 |
-| **Ollama**         | Local LLM runtime                       |
-| **Llama 3.2**      | AI language model                       |
-| **LocalStorage**   | Client-side chat history                |
-| **Web Speech API** | Voice input and AI voice output         |
-| **Git & GitHub**   | Version control and project hosting     |
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+* Web Speech API
+* Local Storage
+* Fetch API
+
+### Backend
+
+* Python
+* Flask
+* Flask-CORS
+* REST API
+
+### AI
+
+* Groq API
+* Llama 3.1 8B Instant
+
+### Deployment
+
+* GitHub Pages — Frontend
+* Render — Backend
+* GitHub — Version Control
+
+---
+
+## 🏗️ Project Architecture
+
+```text
+                    ┌──────────────────────┐
+                    │      User Browser    │
+                    │   HTML / CSS / JS    │
+                    └──────────┬───────────┘
+                               │
+                               │ HTTP POST /chat
+                               ▼
+                    ┌──────────────────────┐
+                    │    Flask Backend     │
+                    │      REST API        │
+                    └──────────┬───────────┘
+                               │
+                               │ API Request
+                               ▼
+                    ┌──────────────────────┐
+                    │      Groq API        │
+                    │   Llama 3.1 Model    │
+                    └──────────┬───────────┘
+                               │
+                               │ AI Response
+                               ▼
+                    ┌──────────────────────┐
+                    │    Chat Interface    │
+                    │   Displays Response  │
+                    └──────────────────────┘
+```
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-my-ai-chatbot/
+AI-Agents-Website/
 │
-├── app.py
-├── test_chat.py
+├── index.html
+├── style.css
+├── script.js
 ├── README.md
-├── .gitignore
 │
-└── static/
-    ├── index.html
-    ├── style.css
-    └── script.js
+└── backend/
+    ├── app.py
+    └── requirements.txt
 ```
 
 ---
 
-## ⚙️ Requirements
+## ⚙️ How It Works
 
-Before running the project, install the following:
-
-* Python 3.x
-* Flask
-* Requests
-* Ollama
-* Llama 3.2 model
-* Modern web browser such as Google Chrome
+1. The user enters a message in the chatbot.
+2. JavaScript captures the message.
+3. The frontend sends the message to the Flask `/chat` API.
+4. Flask receives the request.
+5. The backend sends the message to the Groq API.
+6. The AI model generates a response.
+7. Flask returns the response as JSON.
+8. JavaScript displays the AI response in the chat interface.
+9. Chat history is stored locally in the browser.
 
 ---
 
-## 🚀 Installation & Setup
+## 🚀 Run the Project Locally
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/srivanigunturi796-lab/my-ai-chatbot.git
-```
+### 1. Clone the repository
 
 ```bash
-cd my-ai-chatbot
+git clone https://github.com/srivanigunturi796-lab/AI-Agents-Website.git
+cd AI-Agents-Website
 ```
 
-### 2. Install Python Dependencies
+### 2. Install backend dependencies
 
 ```bash
-pip install flask requests
+cd backend
+pip install -r requirements.txt
 ```
 
-### 3. Install Ollama
+### 3. Configure the API key
 
-Install Ollama on your computer and make sure the Ollama service is running.
+Create an environment variable named:
 
-Then download the Llama 3.2 model:
+```text
+GROQ_API_KEY
+```
+
+Do **not** commit your API key to GitHub.
+
+### 4. Start the Flask backend
 
 ```bash
-ollama pull llama3.2
+gunicorn app:app
 ```
 
-### 4. Start the Flask Backend
+For local development, you can also run:
 
 ```bash
 python app.py
 ```
 
-The application will run at:
+### 5. Open the frontend
 
-```text
-http://127.0.0.1:5000
-```
-
-### 5. Open the Application
-
-Open the above address in Google Chrome or another supported browser.
+Open `index.html` in your browser or run it using a local development server.
 
 ---
 
-## 💬 Example Interaction
+## 🔐 Environment Variables
+
+The backend requires:
 
 ```text
-User:
-What is Python?
-
-AI:
-Python is a high-level, general-purpose programming language
-known for its simple syntax and wide range of applications.
+GROQ_API_KEY=your_api_key_here
 ```
 
-The user can also use the 🎤 microphone button to provide voice input.
+For security, API keys should be stored in environment variables and never directly inside frontend JavaScript or committed to GitHub.
 
 ---
 
-## 🔊 Voice Interaction
+## 🌍 Deployment
 
-The chatbot uses browser-based speech technologies:
+### Frontend
 
-### Voice Input
+The frontend is deployed using **GitHub Pages**.
 
-```text
-User speaks
-     ↓
-Speech Recognition
-     ↓
-Text Input
-     ↓
-Flask API
-     ↓
-Llama 3.2
-```
+### Backend
 
-### Voice Output
+The Flask backend is deployed using **Render**.
+
+### Deployment Flow
 
 ```text
-Llama 3.2 Response
-        ↓
-JavaScript
-        ↓
-Speech Synthesis
-        ↓
-AI Voice
+GitHub Repository
+       │
+       ├── Frontend ──► GitHub Pages
+       │
+       └── Backend ───► Render
+                            │
+                            ▼
+                         Groq API
 ```
 
 ---
 
-## 💾 Chat History
+## 📸 Project Preview
 
-Chat messages are stored locally in the browser using:
+### Chat Interface
+
+*Add your project screenshot here.*
 
 ```text
-localStorage
+![AI Agents Website](screenshot.png)
 ```
 
-This allows previous conversations to remain available after refreshing the page.
-
-Users can remove the stored conversation using the **Clear Chat** button.
+You can replace `screenshot.png` with the actual screenshot filename after uploading it to the repository.
 
 ---
 
-## 🔐 Privacy
+## 🎯 Future Enhancements
 
-This project is designed around **local AI processing** using Ollama.
-
-The chatbot does not require sending prompts to a third-party cloud AI API for its core Llama 3.2 response generation.
-
-> Do not commit passwords, API keys, tokens, or other sensitive information to GitHub.
-
----
-
-## 🎯 Project Objectives
-
-The main objectives of this project are:
-
-1. Build a functional AI chatbot web application.
-2. Integrate a locally running Large Language Model.
-3. Develop a Flask-based backend API.
-4. Create a responsive and modern chatbot interface.
-5. Support both text and voice interaction.
-6. Implement browser-based chat history.
-7. Provide a user-friendly AI assistant experience.
-
----
-
-## 🔮 Future Enhancements
-
-Possible future improvements include:
-
-* 🌐 Multi-language voice support
+* 🔊 AI voice responses using Text-to-Speech
 * 👤 User authentication
-* ☁️ Cloud-based conversation synchronization
-* 📎 File and document upload
-* 🧠 Retrieval-Augmented Generation (RAG)
-* 📚 Conversation search
-* 🗂️ Multiple chat sessions
-* ⚙️ AI model selection
-* 📊 Chat analytics
+* 🗂️ Multiple AI agents for different tasks
+* 📊 Conversation analytics
+* 🧠 Improved conversation memory
 * 📱 Progressive Web App support
+* 🎨 More customizable themes
+* 📄 Export conversations
+* 🔍 AI-powered web search integration
 
 ---
 
-## 🧪 Testing
+## 🎓 Learning Outcomes
 
-The application can be tested for:
+Through this project, I practiced:
 
-* AI response generation
-* API communication
-* Voice input
-* Voice output
-* Dark/light theme switching
-* Chat history persistence
-* Clear chat functionality
-* Copy response functionality
-* Message timestamps
-* Responsive layout
+* Frontend web development
+* JavaScript API integration
+* REST API development
+* Flask backend development
+* AI API integration
+* CORS configuration
+* Environment variable management
+* Git and GitHub
+* Cloud deployment
+* Debugging production deployment issues
 
 ---
 
@@ -299,24 +255,22 @@ The application can be tested for:
 
 B.Tech – Computer Science and Data Science
 
----
+Interested in:
 
-## ⭐ Acknowledgements
-
-This project uses open-source technologies including:
-
-* Flask
-* Ollama
-* Llama 3.2
-* Web Speech API
-* HTML
-* CSS
-* JavaScript
+* Artificial Intelligence
+* Data Science
+* Web Development
+* AI Agents
+* Software Development
 
 ---
 
-## 📄 License
+## ⭐ Support
 
-This project is intended for **educational and academic purposes**.
+If you find this project useful, consider giving the repository a ⭐ on GitHub.
 
-You may modify and extend the project for learning and development.
+---
+
+## 📜 License
+
+This project is created for educational and portfolio purposes.
