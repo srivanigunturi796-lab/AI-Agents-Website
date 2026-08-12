@@ -1,4 +1,3 @@
-```python
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -9,24 +8,24 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# Allow the live frontend to access this backend
+# Allow GitHub Pages frontend
 CORS(
     app,
     resources={
         r"/chat": {
             "origins": [
-                "https://ai-agents-website.onrender.com"
+                "https://srivanigunturi796-lab.github.io"
             ]
         }
     }
 )
 
-api_key = os.getenv("GROQ_API_KEY")
+groq_api_key = os.getenv("GROQ_API_KEY")
 
-if not api_key:
+if not groq_api_key:
     raise ValueError("GROQ_API_KEY is not set")
 
-client = Groq(api_key=api_key)
+client = Groq(api_key=groq_api_key)
 
 
 @app.route("/", methods=["GET"])
@@ -80,4 +79,3 @@ def chat():
 
 if __name__ == "__main__":
     app.run()
-```
