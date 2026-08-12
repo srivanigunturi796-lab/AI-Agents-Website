@@ -1,7 +1,8 @@
+```python
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
-from openai import OpenAI
+from groq import Groq
 import os
 
 load_dotenv()
@@ -20,12 +21,12 @@ CORS(
     }
 )
 
-api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("GROQ_API_KEY")
 
 if not api_key:
-    raise ValueError("OPENAI_API_KEY is not set")
+    raise ValueError("GROQ_API_KEY is not set")
 
-client = OpenAI(api_key=api_key)
+client = Groq(api_key=api_key)
 
 
 @app.route("/", methods=["GET"])
@@ -53,17 +54,24 @@ def chat():
                 "error": "Message is required"
             }), 400
 
-        response = client.responses.create(
-            model="gpt-4o-mini",
-            input=message
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[
+                {
+                    "role": "user",
+                    "content": message
+                }
+            ]
         )
 
+        reply = response.choices[0].message.content
+
         return jsonify({
-            "reply": response.output_text
+            "reply": reply
         })
 
     except Exception as e:
-        print("OPENAI ERROR:", repr(e))
+        print("GROQ ERROR:", repr(e))
 
         return jsonify({
             "error": str(e)
@@ -72,3 +80,4 @@ def chat():
 
 if __name__ == "__main__":
     app.run()
+```
